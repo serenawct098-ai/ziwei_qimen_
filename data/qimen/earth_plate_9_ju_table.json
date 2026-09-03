@@ -1,0 +1,257 @@
+{
+  "table_name": "earth_plate_9_ju_table",
+  "data_version": "1.0.0-draft",
+  "schema_version": "1.0.0",
+  "effective_rules_version": "v3.0-build",
+  "extraction_status": "draft",
+  "description": "陽遁九局及陰遁九局完整地盤（都寄坤二宮版），逐字轉自《三奇六儀完整格局》。合併版：取代先前索引檔+陽遁分表+陰遁分表三檔架構，回歸規格書第15節原始單一檔案定義。extraction_status未達approved前只可內部測試，不可供正式運算。",
+  "reviewer": null,
+  "verification_cases": [
+    {"test_id": "yang_1_ju_exact_match"},
+    {"test_id": "yang_9_ju_exact_match"},
+    {"test_id": "yin_1_ju_exact_match"},
+    {"test_id": "yin_9_ju_exact_match"},
+    {"test_id": "yang_mid_palace_to_kun2"},
+    {"test_id": "yin_mid_palace_to_kun2"}
+  ],
+  "entries": [
+    {
+      "entry_id": "earth_plate_dispatch_rule",
+      "description": "寄宮總則",
+      "original_quote": "凡奇儀落於中五宮者，一律寄居坤二宮承載，不論陽遁或陰遁，中宮本身不參與飛佈占斷，其吉凶效應完全由坤二宮承接。",
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/一、寄宮總則",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_yang_dun_source_note",
+      "description": "陽遁九局地盤來源說明",
+      "original_quote": "《奇門遁甲統宗》卷之二：「陽遁九局，順布六儀逆布三奇。如一局，甲子戊起坎一宮，則甲戌己在坤二宮，甲申庚在震三宮，甲午辛在巽四宮，甲辰壬在中五宮，甲寅癸在乾六宮，此順布六儀也。丁在兌七宮，丙在艮八宮，乙在離九宮，此逆布三奇也。」",
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽一局",
+      "ju_name": "陽一局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "坎1", "己": "坤2", "庚": "震3", "辛": "巽4", "壬": "中5寄坤2", "癸": "乾6", "丁": "兌7", "丙": "艮8", "乙": "離9"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽二局",
+      "ju_name": "陽二局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "坤2", "己": "震3", "庚": "巽4", "辛": "中5寄坤2", "壬": "乾6", "癸": "兌7", "丁": "艮8", "丙": "離9", "乙": "坎1"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽三局",
+      "ju_name": "陽三局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "震3", "己": "巽4", "庚": "中5寄坤2", "辛": "乾6", "壬": "兌7", "癸": "艮8", "丁": "離9", "丙": "坎1", "乙": "坤2"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽四局",
+      "ju_name": "陽四局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "巽4", "己": "中5寄坤2", "庚": "乾6", "辛": "兌7", "壬": "艮8", "癸": "離9", "丁": "坎1", "丙": "坤2", "乙": "震3"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽五局",
+      "ju_name": "陽五局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "中5寄坤2", "己": "乾6", "庚": "兌7", "辛": "艮8", "壬": "離9", "癸": "坎1", "丁": "坤2", "丙": "震3", "乙": "巽4"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽六局",
+      "ju_name": "陽六局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "乾6", "己": "兌7", "庚": "艮8", "辛": "離9", "壬": "坎1", "癸": "坤2", "丁": "震3", "丙": "巽4", "乙": "中5寄坤2"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽七局",
+      "ju_name": "陽七局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "兌7", "己": "艮8", "庚": "離9", "辛": "坎1", "壬": "坤2", "癸": "震3", "丁": "巽4", "丙": "中5寄坤2", "乙": "乾6"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽八局",
+      "ju_name": "陽八局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "艮8", "己": "離9", "庚": "坎1", "辛": "坤2", "壬": "震3", "癸": "巽4", "丁": "中5寄坤2", "丙": "乾6", "乙": "兌7"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陽九局",
+      "ju_name": "陽九局",
+      "yin_yang_dun": "yang",
+      "palace_assignment": {"戊": "離9", "己": "坎1", "庚": "坤2", "辛": "震3", "壬": "巽4", "癸": "中5寄坤2", "丁": "乾6", "丙": "兌7", "乙": "艮8"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/二、陽遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_yin_dun_source_note",
+      "description": "陰遁九局地盤來源說明",
+      "original_quote": "《奇門遁甲統宗》卷之二：「陰遁九局，逆布六儀，順布三奇。如九局，甲子戊起離九宮，則甲戌己在艮八宮，甲申庚在兌七宮，甲午辛在乾六宮，甲辰壬在中五宮，甲寅癸在巽四宮，此逆布六儀也。丁在震三宮，丙在坤二宮，乙在坎一宮，此順布三奇也。」",
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰一局",
+      "ju_name": "陰一局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "坎1", "己": "離9", "庚": "艮8", "辛": "兌7", "壬": "乾6", "癸": "中5寄坤2", "丁": "巽4", "丙": "震3", "乙": "坤2"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰二局",
+      "ju_name": "陰二局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "坤2", "己": "坎1", "庚": "離9", "辛": "艮8", "壬": "兌7", "癸": "乾6", "丁": "中5寄坤2", "丙": "巽4", "乙": "震3"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰三局",
+      "ju_name": "陰三局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "震3", "己": "坤2", "庚": "坎1", "辛": "離9", "壬": "艮8", "癸": "兌7", "丁": "乾6", "丙": "中5寄坤2", "乙": "巽4"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰四局",
+      "ju_name": "陰四局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "巽4", "己": "震3", "庚": "坤2", "辛": "坎1", "壬": "離9", "癸": "艮8", "丁": "兌7", "丙": "乾6", "乙": "中5寄坤2"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰五局",
+      "ju_name": "陰五局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "中5寄坤2", "己": "巽4", "庚": "震3", "辛": "坤2", "壬": "坎1", "癸": "離9", "丁": "艮8", "丙": "兌7", "乙": "乾6"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰六局",
+      "ju_name": "陰六局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "乾6", "己": "中5寄坤2", "庚": "巽4", "辛": "震3", "壬": "坤2", "癸": "坎1", "丁": "離9", "丙": "艮8", "乙": "兌7"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰七局",
+      "ju_name": "陰七局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "兌7", "己": "乾6", "庚": "中5寄坤2", "辛": "巽4", "壬": "震3", "癸": "坤2", "丁": "坎1", "丙": "離9", "乙": "艮8"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰八局",
+      "ju_name": "陰八局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "艮8", "己": "兌7", "庚": "乾6", "辛": "中5寄坤2", "壬": "巽4", "癸": "震3", "丁": "坤2", "丙": "坎1", "乙": "離9"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_陰九局",
+      "ju_name": "陰九局",
+      "yin_yang_dun": "yin",
+      "palace_assignment": {"戊": "離9", "己": "艮8", "庚": "兌7", "辛": "乾6", "壬": "中5寄坤2", "癸": "巽4", "丁": "震3", "丙": "坤2", "乙": "坎1"},
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/三、陰遁九局地盤（都寄坤二宮版）",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    },
+    {
+      "entry_id": "earth_plate_dispatch_vs_center_occupied_note",
+      "description": "都寄坤二宮版之中宮處理原則（本系統鎖定版本，不採陰遁寄艮八之另一派選項）",
+      "original_quote": "凡陽一局、陽六局、陰五局之壬（或戊己庚辛癸落中宮者），古法本應暫記中五宮，唯因中宮不參與占斷飄佈，故一律轉記寄居坤二宮；此與《星門宮五行生剋映射表（陰陽俱寄坤二宮版）》之天禽星寄宮原則完全一致，凡奇儀、九星、八門逢中五宮者，均統一寄居坤二宮，不另立中宮飄佈規則，以維持全套排盤系統之內部一致性。",
+      "source_file": "三奇六儀完整格局.md",
+      "source_locator": "三奇六儀完整格局/陰陽遁九局（都寄坤二宮版）/四、都寄坤二宮版與中宮實佔版之差異提要",
+      "rule_type": "qimen_setup",
+      "extraction_status": "draft",
+      "data_version": "1.0.0-draft"
+    }
+  ]
+}

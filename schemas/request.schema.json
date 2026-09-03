@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/serenawct098-ai/ziwei_qimen_/schemas/request.schema.json",
+  "title": "ZiweiQimenRequest",
+  "description": "紫微×奇門排盤起局系統 輸入請求 Schema，依規格書第4節輸入資料模型定義。source_locator: 紫微奇門排盤起局系統架構規格書v3建置版/第4節",
+  "type": "object",
+  "schema_version": "1.0.0",
+  "data_version": "1.0.0",
+  "effective_rules_version": "v3.0-build",
+  "properties": {
+    "request_id": {"type": "string"},
+    "request_created_at": {"type": "string", "format": "date-time"},
+    "question_text": {"type": "string"},
+    "question_domain": {"type": "string", "enum": ["annual_fortune", "career", "wealth", "relationship", "health", "legal", "travel", "fengshui", "event_development", "other"]},
+    "question_subject": {"type": "string"},
+    "counterparty": {"type": ["string", "null"]},
+    "desired_outcome": {"type": ["string", "null"]},
+    "time_horizon": {"type": "string", "enum": ["immediate", "days", "weeks", "months", "year", "long_term"]},
+    "run_mode": {"type": "string", "enum": ["ziwei_only", "qimen_only", "dual"]},
+    "output_mode": {"type": "string", "enum": ["separate", "combined_25_grid", "both"]},
+    "analysis_language": {"type": "string", "const": "zh-Hant"},
+    "current_residence": {"$ref": "#/$defs/current_residence"},
+    "ziwei_input": {"$ref": "#/$defs/ziwei_input"},
+    "qimen_input": {"$ref": "#/$defs/qimen_input"}
+  },
+  "required": ["request_id", "request_created_at", "question_text", "question_domain", "question_subject", "time_horizon", "run_mode", "output_mode", "analysis_language"],
+  "allOf": [
+    {"if": {"properties": {"run_mode": {"const": "ziwei_only"}}}, "then": {"required": ["ziwei_input"]}},
+    {"if": {"properties": {"run_mode": {"const": "qimen_only"}}}, "then": {"required": ["qimen_input"]}},
+    {"if": {"properties": {"run_mode": {"const": "dual"}}}, "then": {"required": ["ziwei_input", "qimen_input"]}}
+  ],
+  "$defs": {
+    "current_residence": {
+      "type": "object",
+      "description": "居住滿兩年以上的現居地欄位，依規格書4.2節。",
+      "properties": {
+        "city": {"type": "string"},
+        "country": {"type": "string"},
+        "latitude": {"type": ["number", "null"]},
+        "longitude": {"type": ["number", "null"]},
+        "iana_timezone": {"type": ["string", "null"]},
+        "residence_start_date": {"type": "string", "format": "date"},
+        "continuous_residence_years": {"type": "number"},
+        "residence_qualified": {"type": "boolean"},
+        "primary_long_term_base": {"type": "boolean"}
+      },
+      "required": ["city", "country", "residence_start_date", "continuous_residence_years", "residence_qualified", "primary_long_term_base"]
+    },
+    "ziwei_input": {
+      "type": "object",
+      "description": "紫微輸入欄位，依規格書4.3節。",
+      "properties": {
+        "birth_datetime_local": {"type": "string", "format": "date-time"},
+        "birth_place": {
+          "type": "object",
+          "properties": {
+            "city": {"type": "string"},
+            "country": {"type": "string"},
+            "latitude": {"type": ["number", "null"]},
+            "longitude": {"type": ["number", "null"]},
+            "iana_timezone": {"type": ["string", "null"]}
+          },
+          "required": ["city", "country"]
+        },
+        "current_residence": {"$ref": "#/$defs/current_residence"},
+        "sex": {"type": "string", "enum": ["male", "female"]},
+        "analysis_datetime_local": {"type": "string", "format": "date-time"}
+      },
+      "required": ["birth_datetime_local", "birth_place", "sex", "analysis_datetime_local"]
+    },
+    "qimen_input": {
+      "type": "object",
+      "description": "奇門輸入欄位，依規格書4.4節。",
+      "properties": {
+        "question_datetime_local": {"type": "string", "format": "date-time"},
+        "current_residence": {"$ref": "#/$defs/current_residence"}
+      },
+      "required": ["question_datetime_local", "current_residence"]
+    }
+  },
+  "validation_notes": [
+    "依規格書4.5節輸入驗證規則：ziwei_only與dual必須提供出生時間、出生地、性別與分析時間。",
+    "qimen_only與dual必須提供問事時間與合資格現居地。",
+    "地點最少提供「城市＋國家」或「經緯度＋IANA時區」。",
+    "不接受無時區的模糊時間字串。",
+    "dual模式下，紫微只使用出生資料；奇門只使用問事時間與合資格現居地。",
+    "不可拿出生時間直接起時家奇門，不可用問事時間改寫紫微本命盤。",
+    "不可使用短期旅遊地、酒店、出差地、臨時所在地或實際問事所在地替代現居地。",
+    "現居地判定：continuous_residence_years >= 2 則 residence_qualified = true；< 2 則要求使用者指定主要長居基地；若仍不合資格則奇門起局不可執行（依規格書4.2節）。"
+  ]
+}

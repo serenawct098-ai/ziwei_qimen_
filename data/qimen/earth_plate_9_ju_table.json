@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "data_version": "1.0.0-draft",
+  "table_id": "earth_plate_9_ju_index",
+  "effective_rules_version": "v3.0-build",
+  "extraction_status": "draft",
+  "load_strategy": {
+    "input_field": "yin_yang_dun",
+    "yang": "data/qimen/earth_plate_yang_9_ju_table.json",
+    "yin": "data/qimen/earth_plate_yin_9_ju_table.json"
+  },
+  "rules": [
+    "B02先讀取本索引檔。",
+    "yin_yang_dun為yang時載入陽遁九局表。",
+    "yin_yang_dun為yin時載入陰遁九局表。",
+    "依ju_number查對應局數。",
+    "表內中5寄坤2一律由坤二宮承接。",
+    "陽遁或陰遁來源表的extraction_status未為approved時，只可產出draft_chart，不得進入模組3B五級評級或模組4終局裁決。"
+  ],
+  "source_files": [
+    "《三奇六儀完整格局》.md"
+  ],
+  "verification_cases": [
+    {
+      "test_id": "yang_1_ju_exact_match"
+    },
+    {
+      "test_id": "yang_9_ju_exact_match"
+    },
+    {
+      "test_id": "yin_1_ju_exact_match"
+    },
+    {
+      "test_id": "yin_9_ju_exact_match"
+    },
+    {
+      "test_id": "yang_mid_palace_to_kun2"
+    },
+    {
+      "test_id": "yin_mid_palace_to_kun2"
+    }
+  ],
+  "notes": "本檔為地盤九局索引。陽遁及陰遁資料因確認通道長度限制分檔，分檔不改變任何排局規則、古籍真源、寄坤二原則或draft/approved驗收治理。"
+}

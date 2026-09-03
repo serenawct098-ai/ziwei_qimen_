@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0.0",
+  "data_version": "1.0.0-draft",
+  "table_id": "palace_stem_wuhu_dun",
+  "effective_rules_version": "v3.0-build",
+  "extraction_status": "draft",
+  "rule_type": "charting",
+  "source_entries": [
+    {
+      "entry_id": "ZW-WUHU-DUN-SOURCE-001",
+      "original_quote": "甲己之年丙作首，乙庚之歲戊為頭。丙辛必定尋庚上，丁壬壬位順行流。若問戊癸何方發，甲寅之上好追求。",
+      "source_file": "《五虎遁歌訣》.md",
+      "source_locator": "完整五虎遁歌訣"
+    },
+    {
+      "entry_id": "ZW-WUHU-DUN-SOURCE-002",
+      "original_quote": "甲己之年丙作首，乙庚之歲戊為頭，丙辛歲首庚寅，丁壬壬寅順流，若問戊癸何方發，甲寅之上好追求。",
+      "source_file": "《紫微斗數全書》卷二.md",
+      "source_locator": "起五行寅例"
+    }
+  ],
+  "rules": [
+    {
+      "entry_id": "ZW-WUHU-DUN-001",
+      "year_stems": [
+        "甲",
+        "己"
+      ],
+      "yin_palace_stem": "丙",
+      "sequence": [
+        {
+          "branch": "寅",
+          "stem": "丙"
+        },
+        {
+          "branch": "卯",
+          "stem": "丁"
+        },
+        {
+          "branch": "辰",
+          "stem": "戊"
+        },
+        {
+          "branch": "巳",
+          "stem": "己"
+        },
+        {
+          "branch": "午",
+          "stem": "庚"
+        },
+        {
+          "branch": "未",
+          "stem": "辛"
+        },
+        {
+          "branch": "申",
+          "stem": "壬"
+        },
+        {
+          "branch": "酉",
+          "stem": "癸"
+        },
+        {
+          "branch": "戌",
+          "stem": "甲"
+        },
+        {
+          "branch": "亥",
+          "stem": "乙"
+        },
+        {
+          "branch": "子",
+          "stem": "丙"
+        },
+        {
+          "branch": "丑",
+          "stem": "丁"
+        }
+      ],
+      "source_file": [
+        "《五虎遁歌訣》.md",
+        "《紫微斗數全書》卷二.md"
+      ],
+      "source_locator": [
+        "完整五虎遁歌訣",
+        "起五行寅例"
+      ],
+      "original_quote": [
+        "甲己之年丙作首，乙庚之歲戊為頭。丙辛必定尋庚上，丁壬壬位順行流。若問戊癸何方發，甲寅之上好追求。",
+        "甲己之年丙作首，乙庚之歲戊為頭，丙辛歲首庚寅，丁壬壬寅順流，若問戊癸何方發，甲寅之上好追求。"
+      ],
+      "extraction_status": "draft"
+    },
+    {
+      "entry_id": "ZW-WUHU-DUN-002",
+      "year_stems": [
+        "乙",
+        "庚"
+      ],
+      "yin_palace_stem": "戊",
+      "sequence": [
+        {
+          "branch": "寅",
+          "stem": "戊"
+        },
+        {
+          "branch": "卯",
+          "stem": "己"
+        },
+        {
+          "branch": "辰",
+          "stem": "庚"
+        },
+        {
+          "branch": "巳",
+          "stem": "辛"
+        },
+        {
+          "branch": "午",
+          "stem": "壬"
+        },
+        {
+          "branch": "未",
+          "stem": "癸"
+        },
+        {
+          "branch": "申",
+          "stem": "甲"
+        },
+        {
+          "branch": "酉",
+          "stem": "乙"
+        },
+        {
+          "branch": "戌",
+          "stem": "丙"
+        },
+        {
+          "branch": "亥",
+          "stem": "丁"
+        },
+        {
+          "branch": "子",
+          "stem": "戊"
+        },
+        {
+          "branch": "丑",
+          "stem": "己"
+        }
+      ],
+      "source_file": [
+        "《五虎遁歌訣》.md",
+        "《紫微斗數全書》卷二.md"
+      ],
+      "source_locator": [
+        "完整五虎遁歌訣",
+        "起五行寅例"
+      ],
+      "original_quote": [
+        "甲己之年丙作首，乙庚之歲戊為頭。丙辛必定尋庚上，丁壬壬位順行流。若問戊癸何方發，甲寅之上好追求。",
+        "甲己之年丙作首，乙庚之歲戊為頭，丙辛歲首庚寅，丁壬壬寅順流，若問戊癸何方發，甲寅之上好追求。"
+      ],
+      "extraction_status": "draft"
+    },
+    {
+      "entry_id": "ZW-WUHU-DUN-003",
+      "year_stems": [
+        "丙",
+        "辛"
+      ],
+      "yin_palace_stem": "庚",
+      "sequence": [
+        {
+          "branch": "寅",
+          "stem": "庚"
+        },
+        {
+          "branch": "卯",
+          "stem": "辛"
+        },
+        {
+          "branch": "辰",
+          "stem": "壬"
+        },
+        {
+          "branch": "巳",
+          "stem": "癸"
+        },
+        {
+          "branch": "午",
+          "stem": "甲"
+        },
+        {
+          "branch": "未",
+          "stem": "乙"
+        },
+        {
+          "branch": "申",
+          "stem": "丙"
+        },
+        {
+          "branch": "酉",
+          "stem": "丁"
+        },
+        {
+          "branch": "戌",
+          "stem": "戊"
+        },
+        {
+          "branch": "亥",
+          "stem": "己"
+        },
+        {
+          "branch": "子",
+          "stem": "庚"
+        },
+        {
+          "branch": "丑",
+          "stem": "辛"
+        }
+      ],
+      "source_file": [
+        "《五虎遁歌訣》.md",
+        "《紫微斗數全書》卷二.md"
+      ],
+      "source_locator": [
+        "完整五虎遁歌訣",
+        "起五行寅例"
+      ],
+      "original_quote": [
+        "甲己之年丙作首，乙庚之歲戊為頭。丙辛必定尋庚上，丁壬壬位順行流。若問戊癸何方發，甲寅之上好追求。",
+        "甲己之年丙作首，乙庚之歲戊為頭，丙辛歲首庚寅，丁壬壬寅順流，若問戊癸何方發，甲寅之上好追求。"
+      ],
+      "extraction_status": "draft"
+    },
+    {
+      "entry_id": "ZW-WUHU-DUN-004",
+      "year_stems": [
+        "丁",
+        "壬"
+      ],
+      "yin_palace_stem": "壬",
+      "sequence": [
+        {
+          "branch": "寅",
+          "stem": "壬"
+        },
+        {
+          "branch": "卯",
+          "stem": "癸"
+        },
+        {
+          "branch": "辰",
+          "stem": "甲"
+        },
+        {
+          "branch": "巳",
+          "stem": "乙"
+        },
+        {
+          "branch": "午",
+          "stem": "丙"
+        },
+        {
+          "branch": "未",
+          "stem": "丁"
+        },
+        {
+          "branch": "申",
+          "stem": "戊"
+        },
+        {
+          "branch": "酉",
+          "stem": "己"
+        },
+        {
+          "branch": "戌",
+          "stem": "庚"
+        },
+        {
+          "branch": "亥",
+          "stem": "辛"
+        },
+        {
+          "branch": "子",
+          "stem": "壬"
+        },
+        {
+          "branch": "丑",
+          "stem": "癸"
+        }
+      ],
+      "source_file": [
+        "《五虎遁歌訣》.md",
+        "《紫微斗數全書》卷二.md"
+      ],
+      "source_locator": [
+        "完整五虎遁歌訣",
+        "起五行寅例"
+      ],
+      "original_quote": [
+        "甲己之年丙作首，乙庚之歲戊為頭。丙辛必定尋庚上，丁壬壬位順行流。若問戊癸何方發，甲寅之上好追求。",
+        "甲己之年丙作首，乙庚之歲戊為頭，丙辛歲首庚寅，丁壬壬寅順流，若問戊癸何方發，甲寅之上好追求。"
+      ],
+      "extraction_status": "draft"
+    },
+    {
+      "entry_id": "ZW-WUHU-DUN-005",
+      "year_stems": [
+        "戊",
+        "癸"
+      ],
+      "yin_palace_stem": "甲",
+      "sequence": [
+        {
+          "branch": "寅",
+          "stem": "甲"
+        },
+        {
+          "branch": "卯",
+          "stem": "乙"
+        },
+        {
+          "branch": "辰",
+          "stem": "丙"
+        },
+        {
+          "branch": "巳",
+          "stem": "丁"
+        },
+        {
+          "branch": "午",
+          "stem": "戊"
+        },
+        {
+          "branch": "未",
+          "stem": "己"
+        },
+        {
+          "branch": "申",
+          "stem": "庚"
+        },
+        {
+          "branch": "酉",
+          "stem": "辛"
+        },
+        {
+          "branch": "戌",
+          "stem": "壬"
+        },
+        {
+          "branch": "亥",
+          "stem": "癸"
+        },
+        {
+          "branch": "子",
+          "stem": "甲"
+        },
+        {
+          "branch": "丑",
+          "stem": "乙"
+        }
+      ],
+      "source_file": [
+        "《五虎遁歌訣》.md",
+        "《紫微斗數全書》卷二.md"
+      ],
+      "source_locator": [
+        "完整五虎遁歌訣",
+        "起五行寅例"
+      ],
+      "original_quote": [
+        "甲己之年丙作首，乙庚之歲戊為頭。丙辛必定尋庚上，丁壬壬位順行流。若問戊癸何方發，甲寅之上好追求。",
+        "甲己之年丙作首，乙庚之歲戊為頭，丙辛歲首庚寅，丁壬壬寅順流，若問戊癸何方發，甲寅之上好追求。"
+      ],
+      "extraction_status": "draft"
+    }
+  ]
+}

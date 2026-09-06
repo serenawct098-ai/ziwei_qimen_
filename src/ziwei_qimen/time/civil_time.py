@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from zoneinfo import ZoneInfo
 
-import tzdata
+import tzdata  # type: ignore[import-untyped]
 
 from ziwei_qimen.domain.models import CivilTimeInput, CivilTimeResolution
 from ziwei_qimen.errors import DomainError, ErrorCode

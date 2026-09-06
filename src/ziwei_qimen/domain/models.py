@@ -1,5 +1,3 @@
-"""不可變領域資料模型。"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -10,8 +8,6 @@ from .enums import Gender, QuestionCategory
 
 @dataclass(frozen=True, slots=True)
 class CityLocation:
-    """使用者提交的城市名稱與可選地區代碼。"""
-
     city: str
     country_code: str | None = None
 
@@ -24,8 +20,6 @@ class CityLocation:
 
 @dataclass(frozen=True, slots=True)
 class Coordinates:
-    """由受控城市資料解析後使用的 WGS 84 經緯度。"""
-
     latitude: float
     longitude: float
 
@@ -38,8 +32,6 @@ class Coordinates:
 
 @dataclass(frozen=True, slots=True)
 class ZiweiBirthInput:
-    """紫微本命與限運的唯一 transport input。"""
-
     birth_civil_datetime: datetime
     birth_location: CityLocation
     gender: Gender
@@ -49,8 +41,7 @@ class ZiweiBirthInput:
 
 @dataclass(frozen=True, slots=True)
 class QimenQueryInput:
-    """時家奇門的唯一 transport input。"""
-
     question_civil_datetime: datetime
-    qimen_location: CityLocation
+    question_location: CityLocation
     question_category: QuestionCategory
+    primary_residence_location: CityLocation | None = None

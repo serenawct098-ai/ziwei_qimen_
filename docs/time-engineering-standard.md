@@ -1,74 +1,98 @@
 # 時間工程標準
 
-## 日期範圍
+## 支援範圍
 
 ```text
 1901-01-01 至 2100-12-31
 ```
 
-超出範圍回傳 `unsupported_date_range`。
-
-## 工具鏈
-
-| 責任 | 工具或資料 |
-|---|---|
-| 民用時區與夏令時間 | Python `zoneinfo` + 固定版本 `tzdata` |
-| 城市解析 | 受控 `city_coordinates.json` |
-| 天文計算 | 固定版本 Skyfield |
-| 星曆 | JPL `de440s.bsp` |
-| 農曆轉換基準 | 香港天文台 1901–2100 公曆—農曆資料 |
-
-## 紫微
+超出範圍回傳：
 
 ```text
-出生民用時間 + birth_location
-→ 出生地真太陽時
-→ 原始農曆年月日與生年干支
-→ 晚子時與閏月有效月
+unsupported_date_range
+```
+
+## 地點邊界
+
+```text
+birth_location
+→ 紫微出生地真太陽時
 → 紫微本命盤
+
+question_location
+→ 問事者提出問題時的實際所在城市或座標
+→ 奇門問事地真太陽時
+→ 奇門四柱、節氣、陰陽遁、局數與九宮盤
+
+primary_residence_location
+→ 完成奇門九宮盤後的住宅風水方位映射
+→ 結合住宅坐向、平面圖與實際方向
 ```
 
-## 奇門
+`primary_residence_location` 不參與奇門真太陽時、四柱、節氣、陰陽遁、符頭、三元、局數、地盤、天盤、人盤或神盤。
+
+## 時間鏈
 
 ```text
-問事民用時間 + question_location
-→ 問事地真太陽時
-→ 年月日時干支
-→ 節氣
-→ 陰陽遁
-→ 符頭、三元、局數
-→ 時家轉盤奇門九宮盤
+civil_datetime + iana_timezone
+→ UTC
+→ 天文時間尺度
+→ 經度時差 + 均時差
+→ true_solar_datetime
 ```
 
-`primary_residence_location` 不參與奇門真太陽時、四柱、節氣、陰陽遁、局數或起局。
+內部時間保存微秒精度；晚子時與節氣交界以秒判定。
 
-## 風水
+## 固定工具鏈
+
+| 責任 | 固定資產 |
+|---|---|
+| 民用時區與夏令時間 | Python `zoneinfo` + `tzdata==2025.2` |
+| 天文計算 | Batch 2B 固定 Skyfield 版本 |
+| 星曆 | Batch 2B 固定 JPL `de440s.bsp` |
+| Earth orientation | Batch 2B 固定 IERS snapshot |
+| 城市解析 | Batch 2B 受控 `city_coordinates.json` |
+
+不允許 runtime 自動下載、更新或改用第二資料來源。
+
+## Batch 2A
+
+Batch 2A 完成：
 
 ```text
-完成奇門九宮盤 + primary_residence_location + 空間方向資料
-→ 九宮方位映射
-→ 風水建議
+日期範圍驗證
+IANA timezone 驗證
+DST ambiguous local time 停止
+DST nonexistent local time 停止
+座標邊界驗證
+時間 provenance 資料契約
+無星曆資產時停止
 ```
 
-風水映射不重新起局，不改寫奇門盤。
-
-## 城市
+城市名稱解析在正式受控城市資料集未入庫前回傳：
 
 ```text
-city
-optional country_code
+location_resolution_failed
 ```
 
-解析結果：
+真太陽時計算在 Skyfield、JPL 星曆與 IERS snapshot 未入庫前回傳：
 
 ```text
-canonical_city_id
-city_display_name
-country_code
-latitude_degrees_north
-longitude_degrees_east
-iana_timezone
-city_dataset_version
+astronomy_asset_unavailable
 ```
 
-城市無法唯一解析時回傳 `location_resolution_failed`。
+## Batch 2B
+
+Batch 2B 只可在下列資產完成受控納入後開始：
+
+```text
+固定 Skyfield package version
+JPL de440s.bsp 實體檔案
+de440s.bsp SHA-256
+固定 IERS snapshot 實體檔案
+IERS snapshot 版本與 SHA-256
+city_coordinates.json
+城市資料來源、授權、版本與 SHA-256
+```
+
+未完成時不得建立空檔、範例城市、估算均時差、固定 UTC offset 或 fallback。

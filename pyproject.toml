@@ -1,49 +1,43 @@
 [build-system]
-requires = ["hatchling>=1.27.0"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "ziwei-qimen"
 version = "0.1.0"
-description = "Reproducible Zi Wei Dou Shu and time-based rotating-plate Qi Men Dun Jia system."
+description = "Zi Wei Dou Shu and time-based rotating Qi Men Dun Jia engine"
 readme = "README.md"
-requires-python = ">=3.12,<3.13"
-license = { text = "Proprietary" }
-authors = [
-  { name = "serenawct098-ai" }
+requires-python = ">=3.12"
+dependencies = [
+  "tzdata==2025.2",
 ]
-dependencies = []
 
 [project.optional-dependencies]
 dev = [
-  "mypy>=1.15.0",
-  "pytest>=8.3.5",
-  "pytest-cov>=6.0.0",
-  "ruff>=0.11.0"
+  "pytest==8.3.5",
+  "ruff==0.11.2",
+  "mypy==1.15.0",
 ]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/ziwei_qimen"]
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = [
-  "-ra",
-  "--strict-config",
-  "--strict-markers"
-]
+addopts = "-q"
+pythonpath = ["src"]
 
 [tool.ruff]
 target-version = "py312"
 line-length = 100
-src = ["src", "tests", "tools"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B"]
-ignore = []
+select = ["E", "F", "I", "UP"]
 
 [tool.mypy]
 python_version = "3.12"
-files = ["src", "tests", "tools"]
 strict = true
-warn_unreachable = true
+mypy_path = "src"

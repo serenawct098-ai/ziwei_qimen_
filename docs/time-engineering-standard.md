@@ -94,3 +94,11 @@ Batch 2B 已固化 Skyfield `1.55`、JPL `de440s.bsp` 與 IERS `finals2000A.all`
 ## Batch 2C
 
 Batch 2C 的城市 registry 只可在全部已審核主要城市均由 Natural Earth `5.1.2` 唯一取值、每筆 IANA timezone 可由 `tzdata==2025.2` 載入、city table 的 canonical SHA-256 已寫入 manifest，且 wheel 安裝後能以 package resource 讀取時完成。
+
+## 城市 registry 後續 batch 驗收
+
+- `tools/build_city_coordinates.py` 是唯一 build recipe；它不可進入 runtime 讀取路徑。
+- `src/ziwei_qimen/data/astronomy/city_coordinates.json` 是唯一 runtime SSOT；runtime 只可經 package resource 讀取此檔。
+- 每次修改城市 registry，必須重建 city table、驗證 canonical JSON、SHA-256 與唯一鍵，並同步更新 package manifest 的城市資產 metadata 與 self-hash。
+- 每次修改後，必須以乾淨 venv 安裝 wheel，確認 package resource 可讀取城市表，且 city + country_code 與直接座標兩條輸入路徑均通過。
+- runtime 不可使用網路查詢、城市別名、時區推斷、fallback、alias 或 dual-read。

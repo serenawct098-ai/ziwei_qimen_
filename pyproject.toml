@@ -9,6 +9,7 @@ description = "Zi Wei Dou Shu and time-based rotating Qi Men Dun Jia engine"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+  "skyfield==1.55",
   "tzdata==2025.2",
 ]
 

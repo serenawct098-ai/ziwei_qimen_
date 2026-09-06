@@ -15,6 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+  "pyshp==2.3.1",
   "pytest==8.3.5",
   "ruff==0.11.2",
   "mypy==1.15.0",
@@ -25,6 +26,9 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+ziwei_qimen = ["data/astronomy/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

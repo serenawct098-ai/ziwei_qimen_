@@ -16,6 +16,8 @@ from .enums import (
 from .models import (
     CityLocation,
     Coordinates,
+    CoordinatesLocation,
+    LocationInput,
     QimenQueryInput,
     ZiweiBirthInput,
 )
@@ -26,12 +28,14 @@ __all__ = [
     "CalculationProvenance",
     "CityLocation",
     "Coordinates",
+    "CoordinatesLocation",
     "DecisionBand",
     "Deity",
     "Door",
     "EvidenceRef",
     "Gender",
     "Grade",
+    "LocationInput",
     "PalaceName",
     "PalaceNumber",
     "QimenQueryInput",

@@ -24,6 +24,5 @@ dist/
 
 data/astronomy/*.bsp
 data/astronomy/iers_snapshot.*
-data/astronomy/city_coordinates.json
 
 output/

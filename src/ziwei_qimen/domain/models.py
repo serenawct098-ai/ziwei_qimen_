@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum
@@ -20,14 +21,13 @@ class TimeCalculationStatus(StrEnum):
 @dataclass(frozen=True, slots=True)
 class CityLocation:
     city: str
-    country_code: str | None = None
+    country_code: str
 
     def __post_init__(self) -> None:
-        if not self.city.strip():
-            raise ValueError("city must not be empty")
-        if self.country_code is not None:
-            if len(self.country_code) != 2 or not self.country_code.isalpha():
-                raise ValueError("country_code must be an ISO 3166-1 alpha-2 code")
+        if not self.city or self.city != self.city.strip():
+            raise ValueError("city must be non-empty and untrimmed")
+        if re.fullmatch(r"[A-Z]{2}", self.country_code) is None:
+            raise ValueError("country_code must be two uppercase ASCII letters")
 
 
 @dataclass(frozen=True, slots=True)
@@ -40,6 +40,21 @@ class Coordinates:
             raise ValueError("latitude must be between -90 and 90")
         if not -180.0 <= self.longitude <= 180.0:
             raise ValueError("longitude must be between -180 and 180")
+
+
+@dataclass(frozen=True, slots=True)
+class CoordinatesLocation:
+    latitude: float
+    longitude: float
+    iana_timezone: str
+
+    def __post_init__(self) -> None:
+        Coordinates(latitude=self.latitude, longitude=self.longitude)
+        if not self.iana_timezone:
+            raise ValueError("iana_timezone must not be empty")
+
+
+type LocationInput = CityLocation | CoordinatesLocation
 
 
 @dataclass(frozen=True, slots=True)
@@ -89,7 +104,7 @@ class TrueSolarTimeProvenance:
 @dataclass(frozen=True, slots=True)
 class ZiweiBirthInput:
     birth_civil_datetime: datetime
-    birth_location: CityLocation
+    birth_location: LocationInput
     gender: Gender
     analysis_civil_datetime: datetime
     analysis_timezone: str
@@ -98,6 +113,6 @@ class ZiweiBirthInput:
 @dataclass(frozen=True, slots=True)
 class QimenQueryInput:
     question_civil_datetime: datetime
-    question_location: CityLocation
+    question_location: LocationInput
     question_category: QuestionCategory
-    primary_residence_location: CityLocation | None = None
+    primary_residence_location: LocationInput | None = None

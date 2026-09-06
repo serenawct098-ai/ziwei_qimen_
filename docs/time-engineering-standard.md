@@ -31,6 +31,12 @@ primary_residence_location
 
 `primary_residence_location` 不參與奇門真太陽時、四柱、節氣、陰陽遁、符頭、三元、局數、地盤、天盤、人盤或神盤。
 
+## 地點解析
+
+- 優先輸入為 `latitude`、`longitude` 與 `iana_timezone`。系統只驗證座標範圍與 `tzdata==2025.2` 的 IANA identifier。
+- 便利輸入為受控 `city` 與 `country_code`。系統只讀 `src/ziwei_qimen/data/astronomy/city_coordinates.json` 的 package resource，且必須唯一命中。
+- 未收錄、重複或資料不完整時回傳 `location_resolution_failed`。不進行全球城市時區推斷或網路查詢。
+
 ## 時間鏈
 
 ```text
@@ -48,10 +54,10 @@ civil_datetime + iana_timezone
 | 責任 | 固定資產 |
 |---|---|
 | 民用時區與夏令時間 | Python `zoneinfo` + `tzdata==2025.2` |
-| 天文計算 | Batch 2B 固定 Skyfield 版本 |
-| 星曆 | Batch 2B 固定 JPL `de440s.bsp` |
-| Earth orientation | Batch 2B 固定 IERS snapshot |
-| 城市解析 | Batch 2B 受控 `city_coordinates.json` |
+| 天文計算 | Skyfield `1.55` |
+| 星曆 | JPL `de440s.bsp` Release asset |
+| Earth orientation | IERS `finals2000A.all` Release asset |
+| 城市解析 | `ziwei_qimen` package resource 的受控 `city_coordinates.json` |
 
 不允許 runtime 自動下載、更新或改用第二資料來源。
 
@@ -83,16 +89,8 @@ astronomy_asset_unavailable
 
 ## Batch 2B
 
-Batch 2B 只可在下列資產完成受控納入後開始：
+Batch 2B 已固化 Skyfield `1.55`、JPL `de440s.bsp` 與 IERS `finals2000A.all`。正式檔名、版本、大小與 SHA-256 以 `src/ziwei_qimen/data/astronomy/asset_manifest.json` 為唯一真值。
 
-```text
-固定 Skyfield package version
-JPL de440s.bsp 實體檔案
-de440s.bsp SHA-256
-固定 IERS snapshot 實體檔案
-IERS snapshot 版本與 SHA-256
-city_coordinates.json
-城市資料來源、授權、版本與 SHA-256
-```
+## Batch 2C
 
-未完成時不得建立空檔、範例城市、估算均時差、固定 UTC offset 或 fallback。
+Batch 2C 的城市 registry 只可在全部已審核主要城市均由 Natural Earth `5.1.2` 唯一取值、每筆 IANA timezone 可由 `tzdata==2025.2` 載入、city table 的 canonical SHA-256 已寫入 manifest，且 wheel 安裝後能以 package resource 讀取時完成。

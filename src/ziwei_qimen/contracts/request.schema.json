@@ -5,43 +5,44 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "ziwei": {
-      "$ref": "#/$defs/ziweiRequest"
-    },
-    "qimen": {
-      "$ref": "#/$defs/qimenRequest"
-    }
+    "ziwei": {"$ref": "#/$defs/ziweiRequest"},
+    "qimen": {"$ref": "#/$defs/qimenRequest"}
   },
-  "anyOf": [
-    {
-      "required": ["ziwei"]
-    },
-    {
-      "required": ["qimen"]
-    }
-  ],
+  "anyOf": [{"required": ["ziwei"]}, {"required": ["qimen"]}],
   "$defs": {
     "civilDateTime": {
       "type": "string",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$"
     },
-    "countryCode": {
+    "countryCode": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "ianaTimezone": {
       "type": "string",
-      "pattern": "^[A-Z]{2}$"
+      "pattern": "^[A-Za-z_+\\-]+/[A-Za-z_+\\-]+(?:/[A-Za-z_+\\-]+)*$"
     },
     "cityLocation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["city"],
+      "required": ["city", "country_code"],
       "properties": {
-        "city": {
-          "type": "string",
-          "minLength": 1
-        },
-        "country_code": {
-          "$ref": "#/$defs/countryCode"
-        }
+        "city": {"type": "string", "minLength": 1},
+        "country_code": {"$ref": "#/$defs/countryCode"}
       }
+    },
+    "coordinatesLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latitude", "longitude", "iana_timezone"],
+      "properties": {
+        "latitude": {"type": "number", "minimum": -90, "maximum": 90},
+        "longitude": {"type": "number", "minimum": -180, "maximum": 180},
+        "iana_timezone": {"$ref": "#/$defs/ianaTimezone"}
+      }
+    },
+    "location": {
+      "oneOf": [
+        {"$ref": "#/$defs/coordinatesLocation"},
+        {"$ref": "#/$defs/cityLocation"}
+      ]
     },
     "ziweiRequest": {
       "type": "object",
@@ -54,23 +55,11 @@
         "analysis_timezone"
       ],
       "properties": {
-        "birth_civil_datetime": {
-          "$ref": "#/$defs/civilDateTime"
-        },
-        "birth_location": {
-          "$ref": "#/$defs/cityLocation"
-        },
-        "gender": {
-          "type": "string",
-          "enum": ["female", "male"]
-        },
-        "analysis_civil_datetime": {
-          "$ref": "#/$defs/civilDateTime"
-        },
-        "analysis_timezone": {
-          "type": "string",
-          "pattern": "^[A-Za-z_+-]+/[A-Za-z_+\\-]+(?:/[A-Za-z_+\\-]+)*$"
-        }
+        "birth_civil_datetime": {"$ref": "#/$defs/civilDateTime"},
+        "birth_location": {"$ref": "#/$defs/location"},
+        "gender": {"type": "string", "enum": ["female", "male"]},
+        "analysis_civil_datetime": {"$ref": "#/$defs/civilDateTime"},
+        "analysis_timezone": {"$ref": "#/$defs/ianaTimezone"}
       }
     },
     "qimenRequest": {
@@ -82,25 +71,12 @@
         "question_category"
       ],
       "properties": {
-        "question_civil_datetime": {
-          "$ref": "#/$defs/civilDateTime"
-        },
-        "question_location": {
-          "$ref": "#/$defs/cityLocation"
-        },
-        "primary_residence_location": {
-          "$ref": "#/$defs/cityLocation"
-        },
+        "question_civil_datetime": {"$ref": "#/$defs/civilDateTime"},
+        "question_location": {"$ref": "#/$defs/location"},
+        "primary_residence_location": {"$ref": "#/$defs/location"},
         "question_category": {
           "type": "string",
-          "enum": [
-            "career",
-            "wealth",
-            "relationship",
-            "health",
-            "travel",
-            "event_development"
-          ]
+          "enum": ["career", "wealth", "relationship", "health", "travel", "event_development"]
         }
       }
     }

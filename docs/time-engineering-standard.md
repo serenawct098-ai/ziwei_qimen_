@@ -1,32 +1,19 @@
-# 時間工程標準
+# Time Engineering Standard
 
-## 支援範圍
-
-```text
-1901-01-01 至 2100-12-31
-```
-
-超出範圍回傳：
-
-```text
-unsupported_date_range
-```
-
-## 地點邊界
+## Location responsibilities
 
 ```text
 birth_location
-→ 紫微出生地真太陽時
-→ 紫微本命盤
+  -> required only for a Ziwei birth chart
+  -> civil time to UTC and true solar time
 
 question_location
-→ 問事者提出問題時的實際所在城市或座標
-→ 奇門問事地真太陽時
-→ 奇門四柱、節氣、陰陽遁、局數與九宮盤
+  -> required only for a Qimen question chart
+  -> civil time to UTC and true solar time
 
 primary_residence_location
-→ 完成奇門九宮盤後的住宅風水方位映射
-→ 結合住宅坐向、平面圖與實際方向
+  -> required only for residential feng shui mapping after Qimen chart completion
+  -> does not affect Qimen chart construction
 ```
 
 `primary_residence_location` 不參與奇門真太陽時、四柱、節氣、陰陽遁、符頭、三元、局數、地盤、天盤、人盤或神盤。
@@ -41,15 +28,14 @@ primary_residence_location
 
 ```text
 civil_datetime + iana_timezone
-→ UTC
-→ 天文時間尺度
-→ 經度時差 + 均時差
-→ true_solar_datetime
+  -> validated local civil time
+  -> UTC
+  -> true solar time (astronomy asset required)
+  -> solar-term instant (astronomy asset required)
+  -> Ziwei / Qimen downstream engine
 ```
 
-內部時間保存微秒精度；晚子時與節氣交界以秒判定。
-
-## 固定工具鏈
+## 固定依賴
 
 | 責任 | 固定資產 |
 |---|---|
@@ -61,31 +47,22 @@ civil_datetime + iana_timezone
 
 不允許 runtime 自動下載、更新或改用第二資料來源。
 
-## Batch 2A
-
-Batch 2A 完成：
+## Time output states
 
 ```text
-日期範圍驗證
-IANA timezone 驗證
-DST ambiguous local time 停止
-DST nonexistent local time 停止
-座標邊界驗證
-時間 provenance 資料契約
-無星曆資產時停止
-```
-
-城市名稱解析在正式受控城市資料集未入庫前回傳：
-
-```text
+valid
+ambiguous_local_time
+nonexistent_local_time
+invalid_timezone
+unsupported_date_range
+invalid_coordinates
 location_resolution_failed
-```
-
-真太陽時計算在 Skyfield、JPL 星曆與 IERS snapshot 未入庫前回傳：
-
-```text
 astronomy_asset_unavailable
 ```
+
+## Batch 2A
+
+Batch 2A 已建立民用時間邊界：輸入必須為 naïve civil datetime，加明確 IANA timezone；系統拒絕 DST ambiguous／nonexistent local time，並限制 1901-01-01 至 2100-12-31。
 
 ## Batch 2B
 
@@ -95,10 +72,13 @@ Batch 2B 已固化 Skyfield `1.55`、JPL `de440s.bsp` 與 IERS `finals2000A.all`
 
 Batch 2C 的城市 registry 只可在全部已審核主要城市均由 Natural Earth `5.1.2` 唯一取值、每筆 IANA timezone 可由 `tzdata==2025.2` 載入、city table 的 canonical SHA-256 已寫入 manifest，且 wheel 安裝後能以 package resource 讀取時完成。
 
-## 城市 registry 後續 batch 驗收
-
-- `tools/build_city_coordinates.py` 是唯一 build recipe；它不可進入 runtime 讀取路徑。
-- `src/ziwei_qimen/data/astronomy/city_coordinates.json` 是唯一 runtime SSOT；runtime 只可經 package resource 讀取此檔。
+- Runtime SSOT：`src/ziwei_qimen/data/astronomy/city_coordinates.json`。
+- Runtime metadata SSOT：`src/ziwei_qimen/data/astronomy/asset_manifest.json`。
+- `tools/build_city_coordinates.py` 是固定 Natural Earth input 的 build recipe；`tools/verify_city_coordinates.py` 是驗證器。兩者不在 runtime 讀取路徑。
 - 每次修改城市 registry，必須重建 city table、驗證 canonical JSON、SHA-256 與唯一鍵，並同步更新 package manifest 的城市資產 metadata 與 self-hash。
 - 每次修改後，必須以乾淨 venv 安裝 wheel，確認 package resource 可讀取城市表，且 city + country_code 與直接座標兩條輸入路徑均通過。
 - runtime 不可使用網路查詢、城市別名、時區推斷、fallback、alias 或 dual-read。
+
+## HKO 公農曆日期
+
+`hong_kong_lunar_calendar_1901_2100.json` 是 1901-01-01 至 2100-12-31 的固定離線 Gregorian date 到 Lunar date 資料。runtime 只接受 `date` lookup，並以 package resource 讀取；不使用網路、raw TXT、演算法 fallback、lunar-to-Gregorian reverse lookup 或 coverage 外日期推算。1900 年十一月與 2100 年十二月是 coverage boundary partial month，`month_length` 為 `null`；晚子時規則屬後續命理輸入正規化，不屬本表。

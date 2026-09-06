@@ -1,0 +1,33 @@
+{
+  "catalog_id": "sources.catalog",
+  "purpose": "唯一來源條目目錄。原文正文會在完成逐份來源核實後存入 data/sources/ziwei/ 或 data/sources/qimen/。",
+  "entries": [
+    {
+      "source_id": "spec.traditional_algorithm_operations",
+      "source_title": "紫微×奇門傳統算法作業規格書",
+      "source_kind": "locked_adjudication",
+      "verification_status": "adopted_by_user",
+      "source_file": "external_project_knowledge_base/紫微×奇門傳統算法作業規格書.md",
+      "role": "唯一算法裁定來源",
+      "design_origin_note": "使用者已鎖定為新系統唯一算法基準。"
+    },
+    {
+      "source_id": "engineering.time_standard",
+      "source_title": "時間工程標準",
+      "source_kind": "engineering_standard",
+      "verification_status": "adopted_by_user",
+      "source_file": "docs/time-engineering-standard.md",
+      "role": "時間、時區、城市解析、星曆、版本與可重現性工程裁定",
+      "design_origin_note": "只處理工程選型，不重寫紫微或奇門算法。"
+    },
+    {
+      "source_id": "adjudication.grading_and_dual_track_matrix",
+      "source_title": "五級與 25 格使用者裁定",
+      "source_kind": "locked_adjudication",
+      "verification_status": "adopted_by_user",
+      "source_file": "external_conversation/2026-09-06",
+      "role": "紫微五級、奇門五級、25 格與決策帶裁定",
+      "design_origin_note": "五級標籤為大吉、小吉、平、小凶、大凶；奇門採固定優先序且禁止數值加總；25 格只作行動策略。"
+    }
+  ]
+}

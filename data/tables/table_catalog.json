@@ -1,0 +1,27 @@
+{
+  "catalog_id": "tables.catalog",
+  "purpose": "唯一正式機器表目錄。此批次只建立目錄，不建立未完成資料表。",
+  "tables": [
+    {
+      "table_id": "ziwei.grading_rules",
+      "planned_path": "data/tables/ziwei/grading_rules.json",
+      "scope": ["紫微五級"],
+      "status": "blocked_by_source_gap",
+      "source_gap_id": "GAP-ZW-008"
+    },
+    {
+      "table_id": "qimen.grading_rules",
+      "planned_path": "data/tables/qimen/grading_rules.json",
+      "scope": ["奇門五級"],
+      "status": "blocked_by_source_gap",
+      "source_gap_id": "GAP-QM-006"
+    },
+    {
+      "table_id": "integration.dual_track_matrix",
+      "planned_path": "data/tables/integration/dual_track_matrix.json",
+      "scope": ["25格", "決策帶"],
+      "status": "blocked_by_grading_completion",
+      "source_gap_id": "GAP-INT-001"
+    }
+  ]
+}

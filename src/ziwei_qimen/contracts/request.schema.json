@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://serenawct098-ai.github.io/ziwei_qimen/contracts/request.schema.json",
+  "title": "Zi Wei x Qi Men Request",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ziwei": {
+      "$ref": "#/$defs/ziweiRequest"
+    },
+    "qimen": {
+      "$ref": "#/$defs/qimenRequest"
+    }
+  },
+  "anyOf": [
+    {
+      "required": ["ziwei"]
+    },
+    {
+      "required": ["qimen"]
+    }
+  ],
+  "$defs": {
+    "civilDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Local civil datetime. The caller supplies city separately; the system resolves the city to controlled coordinates and an IANA timezone."
+    },
+    "countryCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "Optional ISO 3166-1 alpha-2 country or region code for city disambiguation."
+    },
+    "cityLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["city"],
+      "properties": {
+        "city": {
+          "type": "string",
+          "minLength": 1,
+          "description": "City name. It must resolve uniquely in the controlled city dataset."
+        },
+        "country_code": {
+          "$ref": "#/$defs/countryCode"
+        }
+      }
+    },
+    "ziweiRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "birth_civil_datetime",
+        "birth_location",
+        "gender",
+        "analysis_civil_datetime",
+        "analysis_timezone"
+      ],
+      "properties": {
+        "birth_civil_datetime": {
+          "$ref": "#/$defs/civilDateTime"
+        },
+        "birth_location": {
+          "$ref": "#/$defs/cityLocation"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["female", "male"]
+        },
+        "analysis_civil_datetime": {
+          "$ref": "#/$defs/civilDateTime"
+        },
+        "analysis_timezone": {
+          "type": "string",
+          "pattern": "^[A-Za-z_+-]+/[A-Za-z_+\\-]+(?:/[A-Za-z_+\\-]+)*$",
+          "description": "IANA timezone for the analysis civil datetime. It is only used to interpret analysis time for Zi Wei limit overlays."
+        }
+      }
+    },
+    "qimenRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_civil_datetime",
+        "qimen_location",
+        "question_category"
+      ],
+      "properties": {
+        "question_civil_datetime": {
+          "$ref": "#/$defs/civilDateTime"
+        },
+        "qimen_location": {
+          "$ref": "#/$defs/cityLocation"
+        },
+        "question_category": {
+          "type": "string",
+          "enum": [
+            "career",
+            "wealth",
+            "relationship",
+            "health",
+            "travel",
+            "event_development"
+          ]
+        }
+      }
+    }
+  }
+}

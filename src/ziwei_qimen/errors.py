@@ -12,6 +12,8 @@ class ErrorCode(StrEnum):
     INVALID_COORDINATES = "invalid_coordinates"
     LOCATION_RESOLUTION_FAILED = "location_resolution_failed"
     ASTRONOMY_ASSET_UNAVAILABLE = "astronomy_asset_unavailable"
+    CALENDAR_ASSET_UNAVAILABLE = "calendar_asset_unavailable"
+    CALENDAR_DATE_OUT_OF_RANGE = "calendar_date_out_of_range"
 
 
 @dataclass(frozen=True, slots=True)

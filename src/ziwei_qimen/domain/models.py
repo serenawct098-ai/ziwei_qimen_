@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from enum import StrEnum
 
 from .enums import Gender, QuestionCategory
@@ -80,6 +80,18 @@ class CivilTimeResolution:
     iana_timezone: str
     utc_datetime: datetime
     timezone_data_version: str
+
+
+@dataclass(frozen=True, slots=True)
+class LunarDateResolution:
+    gregorian_date: date
+    lunar_year: int
+    lunar_month: int
+    lunar_day: int
+    is_leap_month: bool
+    solar_term: str | None
+    dataset_version: str
+    source_provider: str
 
 
 @dataclass(frozen=True, slots=True)

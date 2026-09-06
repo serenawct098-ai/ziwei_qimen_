@@ -18,6 +18,7 @@ from .models import (
     Coordinates,
     CoordinatesLocation,
     LocationInput,
+    LunarDateResolution,
     QimenQueryInput,
     ZiweiBirthInput,
 )
@@ -36,6 +37,7 @@ __all__ = [
     "Gender",
     "Grade",
     "LocationInput",
+    "LunarDateResolution",
     "PalaceName",
     "PalaceNumber",
     "QimenQueryInput",
